@@ -122,7 +122,5 @@ const mapStateToProps = state => ({
   errors: state.errors
 });
 
-export default connect(
-  mapStateToProps,
-  { registerUser }
-)(withRouter(Register));
+// Because we use "this.props.history", we need to use "withRouter()" 
+export default connect(mapStateToProps, { registerUser })(withRouter(Register));
