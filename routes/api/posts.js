@@ -98,10 +98,7 @@ router.post(
         .then(post => {
           // Check if the user has already liked this post
           // remember to user "toString()", because the origin type of "post.user" is "object"!!!!!
-          if (
-            post.likes.filter(like => like.user.toString() === req.user.id)
-              .length > 0
-          ) {
+          if (post.likes.filter(like => like.user.toString() === req.user.id).length > 0) {
             return res
               .status(400)
               .json({ notauthorized: "User already liked this post" });
@@ -129,10 +126,7 @@ router.post(
         .then(post => {
           // Check if the user has already liked this post
           // remember to user "toString()", because the origin type of "post.user" is "object"!!!!!
-          if (
-            post.likes.filter(like => like.user.toString() === req.user.id)
-              .length === 0
-          ) {
+          if (post.likes.filter(like => like.user.toString() === req.user.id).length === 0) {
             return res
               .status(400)
               .json({ notliked: "You have not yet liked this post" });
