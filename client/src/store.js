@@ -6,13 +6,15 @@ const initialState = {};
 
 const middleware = [thunk];
 
+// Make sure the website will work using browsers not having the Redux Devtools installed
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
 // createStore(reducer, preloadState, middleware)
 const store = createStore(
   rootReducer,
   initialState,
-  compose(
-    applyMiddleware(...middleware), 
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__() // set up redux chrome extension
+  composeEnhancers(
+    applyMiddleware(...middleware)
   )
 );
 
